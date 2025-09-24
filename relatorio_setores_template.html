@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relatório de Movimentação Entre Setores</title>
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            margin: 20px; 
+            color: #333;
+        }
+        /* --- CABEÇALHO ATUALIZADO --- */
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 2px solid #6c757d;
+            padding-bottom: 15px;
+            margin-bottom: 25px;
+        }
+        
+        .header-text {
+            text-align: right;
+        }
+        .header-text h1 { 
+            color: #6c757d; 
+            margin: 0;
+            font-size: 24px;
+        }
+        .header-text p { 
+            margin: 5px 0 0 0; 
+            font-size: 14px;
+        }
+
+        table { 
+            border-collapse: collapse; 
+            width: 100%; 
+            margin-top: 15px; 
+        }
+        th, td { 
+            border: 1px solid #ddd; 
+            padding: 8px; 
+            text-align: left; 
+            font-size: 0.9em;
+            word-wrap: break-word;
+            white-space: pre-wrap;
+        }
+        th { 
+            background-color: #f2f2f2; 
+            font-weight: bold;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        .footer {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 0.8em;
+            color: #888;
+        }
+        @media print {
+            .header, .footer {
+                display: none;
+            }
+            body {
+                margin: 1cm;
+            }
+            table, thead, tbody, tr {
+                page-break-inside: avoid !important;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <div class="header-text">
+            <h1>Relatório de Movimentação Entre Setores</h1>
+            <p><strong>Gerado em:</strong> {{data_geracao}}</p>
+        </div>
+    </div>
+
+    {{tabela_movimentacoes}}
+
+    <div class="footer">
+        <p>Relatório gerado pelo sistema Hexa Stock.</p>
+    </div>
+
+</body>
+</html>

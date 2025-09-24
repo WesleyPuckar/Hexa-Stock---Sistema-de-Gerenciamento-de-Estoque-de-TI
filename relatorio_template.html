@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relatório de Estoque</title>
+<style>
+        body { 
+            font-family: Arial, sans-serif; 
+            margin: 20px; 
+            color: #333;
+        }
+        .header {
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        h1 { 
+            color: #007bff; 
+            margin: 0;
+        }
+        h2 { 
+            border-bottom: 1px solid #ccc; 
+            padding-bottom: 5px; 
+            margin-top: 40px;
+            color: #333;
+            font-size: 1.2em;
+        }
+        p { margin: 5px 0; }
+        strong { color: #555; }
+        table { 
+            border-collapse: collapse; 
+            width: 100%; 
+            margin-top: 15px; 
+        }
+        th, td { 
+            border: 1px solid #ddd; 
+            padding: 8px; 
+            text-align: left; 
+            font-size: 0.9em;
+            /* NOVO: Ajuda a quebrar textos longos que podem forçar a tabela a não caber */
+            word-wrap: break-word;
+        }
+        th { 
+            background-color: #f2f2f2; 
+            font-weight: bold;
+        }
+        .item-details-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0 20px;
+            margin-bottom: 20px;
+        }
+        .footer {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 0.8em;
+            color: #888;
+        }
+
+        /* --- Estilos específicos para impressão ATUALIZADOS --- */
+        @media print {
+            /* Deixamos o header visível, mas removemos o footer da impressão */
+            .footer {
+                display: none;
+            }
+            body {
+                margin: 1cm;
+
+            }
+            /* MUDANÇA: Força a quebra de página ANTES de cada novo item */
+            .item-section {
+                page-break-before: auto;
+                page-break-inside: avoid;
+            }
+            h2 {
+                 /* Evita que um título fique sozinho no final da página */
+                page-break-after: avoid;
+            }
+            table, thead, tbody, tr, td {
+                page-break-inside: avoid !important;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1>Relatório de Estoque e Movimentações</h1>
+        <p><strong>Gerado em:</strong> {{data_geracao}}</p>
+        <p><strong>Total de Tipos de Itens no Relatório:</strong> {{total_itens}}</p>
+    </div>
+
+    {{conteudo_relatorio}}
+
+    <div class="footer">
+        <p>Relatório gerado pelo sistema Hexa Stock.</p>
+    </div>
+
+</body>
+</html>
